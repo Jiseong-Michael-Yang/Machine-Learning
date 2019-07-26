@@ -1,0 +1,52 @@
+# 1. Optimization Objective
+## 1. Logistic Regression
+* Alternative view of logistic regression
+    
+    * Sigmoid
+
+        <center><img src="./img/sigmoid.png" width=400/></center>
+        
+        <center><img src="./img/sigmoid2.png" width=400/></center>
+
+* Cost Function
+    <center><img src="./img/logistic_regression_cost_function.png" width=400 /></center>
+    
+    > A + λB: If λ is high, B gains more weight
+
+## 2. Support Vector Machine
+* Cost Function  
+    <center><img src="./img/svm_cost_function.png" width=500 /></center>
+
+    > CA + B: If C is high, A gains more weight; where C = 1/λ
+
+* Hypothesis
+    <center><img src="./img/svm_hypothesis.png" width=300 /></center>
+
+## 3. Large Margin Intuition
+* Cost Function
+    <center><img src="./img/svm_cost_function.png" width=500 /></center>
+    <center><img src="./img/svm_cost_function2.png" width=500 /></center>
+
+* Parameter C
+    * When C is very large, minimize the first term to zero, leaving the regularization term
+    * Suppose they are as very large as 10,000
+
+* Decision Boundary: Linearly Separable Case
+    * There could be multiple potential lines, but the black one seems the most robust.
+    * Grey lines generate the largest minimun distants (margins)
+    * SVM is also called <strong>Large Margin Classifier</strong>
+<center><img src="./img/svm_decision_boundary.png" width=300 /></center>
+
+* Large Margin Classifier in Presence of Outliers
+    * Large <font color="yellow">C</font>: Decision boundary like the blue line will be changed drastically by an outlier
+    * Not too large <font color="yellow">C</font>: Decision boundary like the black one will not be changed drastically by an outlier
+<center><img src="./img/svm_outliers.png" width=300 /></center>
+
+## 4. Mathmatics Behind Large Margin Classification
+### 1. Vector Inner Product
+* Vector  
+$u = \begin{bmatrix}u1 \\ u2 \end{bmatrix}$
+$v = \begin{bmatrix}v1 \\ v2 \end{bmatrix}$ 
+
+* Norm of the Vector  
+$||u||=length\ of\ vector \ u=\sqrt{u_1^2+u_2^2}$
