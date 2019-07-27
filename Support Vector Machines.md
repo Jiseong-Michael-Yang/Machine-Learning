@@ -45,8 +45,31 @@
 ## 4. Mathmatics Behind Large Margin Classification
 ### 1. Vector Inner Product
 * Vector  
-$u = \begin{bmatrix}u1 \\ u2 \end{bmatrix}$
-$v = \begin{bmatrix}v1 \\ v2 \end{bmatrix}$ 
+    
+    $u = \begin{bmatrix}u1 \\ u2 \end{bmatrix}$
+    $v = \begin{bmatrix}v1 \\ v2 \end{bmatrix}$ 
+
+    <img src="./img/vector.png" width=300 />
+
+    
+
 
 * Norm of the Vector  
-$||u||=length\ of\ vector \ u=\sqrt{u_1^2+u_2^2}$
+$||u||=length\ of\ vector \ u=\sqrt{u_1^2+u_2^2}$  
+$p=length \ of \ projection \ of v \ onto \ u$  
+$u^Tv = p \cdot ||u||=u_1v_1+u_2v_2$
+    > p has a sign depending on the angle between vectors
+
+### 2. SVM Decision Boundary
+* $\Large \underset{\theta}{{\min}}=\frac{1}{2}\sum_{j=1}^n\theta_j^2$  
+
+    $\theta^Tx^{(i)} \geq 1 \ if \ y^{(i)} = 1$  
+    $\theta^Tx^{(i)} \leq -1 \ if \ y^{(i)} = 0$
+
+    $Simplification: \theta_0 = 0,  n = 2$  
+    $\underset{\theta}{{\min}}=\frac{1}{2}\sum_{j=1}^n\theta_j^2=\frac{1}{2}(\theta_1^2+\theta_2^2)={\frac{1}{2}(\sqrt{\theta_1^2+\theta_2^2})^2}=\frac{1}{2}||\theta||^2$
+
+* Inner product of $\theta^Tx^{(i)}$  
+<img src="./img/inner_product.png" width=300 />
+
+$\theta^Tx^{(i)}=p^{(i)}||\theta||$
