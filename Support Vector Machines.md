@@ -8,6 +8,12 @@
         
         <center><img src="./img/sigmoid2.png" width=400/></center>
 
+* Regularization
+    * Greater number of features leads to overfitting
+    * Regularization one way to avoid overfitting(high variance), other than reducing the number of features
+    * Regularization decreases the affect of features
+
+
 * Cost Function
     <center><img src="./img/logistic_regression_cost_function.png" width=400 /></center>
     
@@ -38,8 +44,14 @@
 <center><img src="./img/svm_decision_boundary.png" width=300 /></center>
 
 * Large Margin Classifier in Presence of Outliers
-    * Large <font color="yellow">C</font>: Decision boundary like the blue line will be changed drastically by an outlier
-    * Not too large <font color="yellow">C</font>: Decision boundary like the black one will not be changed drastically by an outlier
+    * Large <font color="yellow">C</font>
+        * Narrow margin (lower rate of misclassification)
+        * The value of cost function will be sensitive with regard to the deviation of the value of $\theta^Tx$ from the threshold value
+        * Decision boundary like the blue line will be changed drastically by an outlier
+    * Not too large <font color="yellow">C</font>
+        * Broad Margin (higher rate of misclassification)
+        * The value of cost function will be resistant with regard to the deviation of the value of $\theta^Tx$ from the threshold value
+        * Decision boundary like the black one will not be changed drastically by an outlier
 <center><img src="./img/svm_outliers.png" width=300 /></center>
 
 ## 4. Mathmatics Behind Large Margin Classification
