@@ -59,7 +59,7 @@
 * Vector  
     
     $u = \begin{bmatrix}u1 \\ u2 \end{bmatrix}$
-    $v = \begin{bmatrix}v1 \\ v2 \end{bmatrix}$ 
+    $v = \begin{bmatrix}v1 \\ v2 \end{bmatrix}$
 
     <img src="./img/vector.png" width=300 />
 
@@ -78,10 +78,12 @@ $u^Tv = p \cdot ||u||=u_1v_1+u_2v_2$
     $\theta^Tx^{(i)} \geq 1 \ if \ y^{(i)} = 1$  
     $\theta^Tx^{(i)} \leq -1 \ if \ y^{(i)} = 0$
 
-    $Simplification: \theta_0 = 0,  n = 2$  
+    $Simplification: \theta_0 = 0,  n = 2$
     $\underset{\theta}{{\min}}=\frac{1}{2}\sum_{j=1}^n\theta_j^2=\frac{1}{2}(\theta_1^2+\theta_2^2)={\frac{1}{2}(\sqrt{\theta_1^2+\theta_2^2})^2}=\frac{1}{2}||\theta||^2$
 
 * Inner product of $\theta^Tx^{(i)}$  
 <img src="./img/inner_product.png" width=300 />
 
-$\theta^Tx^{(i)}=p^{(i)}||\theta||$
+    $\theta^Tx^{(i)}=p^{(i)}||\theta||$  
+    * If the margin is large, $p^{(i)}$ is little, causing $||\theta||$, as well as $J(\theta)$, to be greater
+    * If the margin is small, $p^{(i)}$ is large, causing $||\theta||$, as well as $J(\theta)$, to be smaller
