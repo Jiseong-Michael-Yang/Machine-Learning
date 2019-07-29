@@ -28,7 +28,7 @@
 * Hypothesis
     <center><img src="./img/svm_hypothesis.png" width=300 /></center>
 
-## 3. Large Margin Intuition
+# 2. Large Margin Intuition
 * Cost Function
     <center><img src="./img/svm_cost_function.png" width=500 /></center>
     <center><img src="./img/svm_cost_function2.png" width=500 /></center>
@@ -54,7 +54,7 @@
         * Decision boundary like the black one will not be changed drastically by an outlier
 <center><img src="./img/svm_outliers.png" width=300 /></center>
 
-## 4. Mathmatics Behind Large Margin Classification
+# 3. Mathmatics Behind Large Margin Classification
 ### 1. Vector Inner Product
 * Vector  
     
@@ -85,5 +85,35 @@ $u^Tv = p \cdot ||u||=u_1v_1+u_2v_2$
 <img src="./img/inner_product.png" width=300 />
 
     $\theta^Tx^{(i)}=p^{(i)}||\theta||$  
+    * As $\theta^Tx = 0$, $\theta$ is perpendicular with regard to $x$ 
     * If the margin is large, $p^{(i)}$ is little, causing $||\theta||$, as well as $J(\theta)$, to be greater
     * If the margin is small, $p^{(i)}$ is large, causing $||\theta||$, as well as $J(\theta)$, to be smaller
+
+# 4. Kernels
+## 1. Non-linear Decision Boundary
+<center><img src="./img/nonlinear_decision_boundary.png" width=300 /></center>
+
+* $Predict \ y = 1 \ if$  
+
+$$
+\theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_1x_2 + \theta_4x_1^2+ \theta_5x_2^2 + \cdot\cdot\cdot \geq 0 \\
+h_\theta(x) =
+\begin{cases}
+1, & if \ \theta_0 + \theta_1x_1+ \cdot\cdot\cdot \geq 0 \\
+0, & otherwise
+\end{cases}
+$$
+
+* The expression can be denoted as:  
+
+$$
+\theta_0 + \theta_1f_1 + \theta_2f_2 + \theta_3f_3 + \theta_4f_4 + \theta_5f_5 + \cdot\cdot\cdot 
+$$
+
+* The question: Is there a different / better choice of the features $f_1, \ f_2, \ f_3, \cdot\cdot\cdot \ ?$
+
+## 2. Kernel
+* Given $x$, compute new feature depending on proximity to landmarks $l^{(1)}, \ l^{(2)}, \ l^{(3)}$
+<center><img src="./img/kernel.png" width=300 /></center>
+
+$\Large Given \ x: f_1=similarity(x,l^{(1)})=exp(-\frac{||x-l^{(1)}||^2}{2\sigma^2})$
