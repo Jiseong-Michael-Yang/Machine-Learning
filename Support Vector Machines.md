@@ -21,12 +21,18 @@
 
 ## 2. Support Vector Machine
 * Cost Function  
-    <center><img src="./img/svm_cost_function.png" width=500 /></center>
+
+    $\underset{\theta}{\min}=C\sum_{i=1}^my^{(i)}cost_1(\theta^Tx)+(1-y^{(i)})cost_0(\theta^Tx)+\sum_{j=1}^n\theta_j^2$
 
     > CA + B: If C is high, A gains more weight; where C = 1/λ
 
 * Hypothesis
-    <center><img src="./img/svm_hypothesis.png" width=300 /></center>
+
+$$h_\theta(x)=
+\begin{cases}
+1 & iff \ \theta^Tx \geq 0 \\
+0 & \text{otherwise}
+\end{cases}$$
 
 # 2. Large Margin Intuition
 * Cost Function
@@ -136,17 +142,13 @@ f_1^{(i)}=similarity(x^{(i)},l^{(1)}) \\
 f_1^{(i)}=similarity(x^{(i)},l^{(2)}) \\
 \vdots \\
 f_m^{(i)}=similarity(x^{(i)},l^{(m)}) \\
-
-\end{matrix}\right]
+\end{matrix}\right], x^{(i)} \in \R^{n+1}; \text{where m is the size of data, n the number of features }
 $$
 
 * Cost Function
 
 $$
-\underset{\theta}{\min}=C\sum_{i=1}^my^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})
-
-
-+\sum_{i=1}^m\theta_j^2
+\underset{\theta}{\min}=C\sum_{i=1}^my^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})+\sum_{j=1}^m\theta_j^2
 $$
 
 ### 2. Kernels and Similarity
@@ -166,3 +168,34 @@ $\Large Given \ x: f_1=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(1)}||^2}{2\
     * <strong>B</strong>: If $\sigma$ is small, the value of the function would decrease gentler as feature vector($x$) gets further from vector $l$
 
 <center><img src="https://robotacademy.net.au/wp-content/uploads/2017/05/3D_plots.jpg" width=500></center>
+
+* Given $\theta^T$ optimized by cost function, now $\theta^Tf$ can be evaluated with test data
+    * Predict "1" when $\theta^Tf \geq 0$
+    * Predict "0" otherwise
+
+### 3. SVM with Kernels
+* Hypothesis: Given x, compute features $f \in \R^{m+1}$ (Optionally plus one depending on the constant feature)
+    * Predict "y=1" if $\theta^Tf \geq 0$
+    * Training
+
+        $\underset{\theta}{\min}=C\sum_{i=1}^my^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})+\sum_{j=1}^{\color{yellow}{m}}\theta_j^2$
+        > * Note "m" in the second term for it should be the effective number of features of x
+        > * Also in the second term, j starts from 1 because $\theta_0$ is not regularized
+        > * $\sum_{j=1}^m\theta_j^2 = \theta^T\theta$, but use $\theta^TM\theta$ instead
+        > * $M$ depends on the distance measure and it allows the SVM computation work more efficiently.
+
+* SVM Parameters
+    * $C(=\frac{1}{\Lambda})$
+        * Large $C$ (small $\lambda$): lower bias, high variance (overfitting)
+        * Small $C$ (large $\lambda$): higher bias, low variance (underfitting)
+
+    * $\sigma^2$
+        * Small $\sigma^2$: features $f_i$ vary less smoothly; lower bias, higher variance (overfitting)
+
+            <img src="./img/empty_coordinate_space_small_sigma.png" width=300>
+        
+        * Large $\sigma^2$: features $f_i$ vary more smoothely; higher bias, lower variance (underfitting)
+
+            <img src="./img/empty_coordinate_space_large_sigma.png" width=300>
+
+# 5. SVM in Use
