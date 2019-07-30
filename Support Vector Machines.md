@@ -96,7 +96,7 @@ $u^Tv = p \cdot ||u||=u_1v_1+u_2v_2$
 * $Predict \ y = 1 \ if$  
 
 $$
-\theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_1x_2 + \theta_4x_1^2+ \theta_5x_2^2 + \cdot\cdot\cdot \geq 0 \\
+\theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_1x_2 + \theta_4x_1^2+ \theta_5x_2^2 + \cdots \geq 0 \\
 h_\theta(x) =
 \begin{cases}
 1, & if \ \theta_0 + \theta_1x_1+ \cdot\cdot\cdot \geq 0 \\
@@ -112,8 +112,57 @@ $$
 
 * The question: Is there a different / better choice of the features $f_1, \ f_2, \ f_3, \cdot\cdot\cdot \ ?$
 
-## 2. Kernel
+## 2. Gaussian Kernel
+### 1. Landmarks and Similarity
 * Given $x$, compute new feature depending on proximity to landmarks $l^{(1)}, \ l^{(2)}, \ l^{(3)}$
+> * One way to get the landmarks is to put them in the <strong>exact same</strong> locations as all the training examples
+> * This gives us <strong>m</strong> landmarks, with one landmark per training example
 <center><img src="./img/kernel.png" width=300 /></center>
 
-$\Large Given \ x: f_1=similarity(x,l^{(1)})=exp(-\frac{||x-l^{(1)}||^2}{2\sigma^2})$
+$$
+Given \ x: f_1=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(1)}||^2}{2\sigma^2}\right) \\
+Given \ x: f_2=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(2)}||^2}{2\sigma^2}\right) \\
+Given \ x: f_3=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(3)}||^2}{2\sigma^2}\right)
+$$
+
+* This gives us a <strong>feature vector</strong>, $f_{(i)}$ of all our features for example $x_{(i)}$
+* $f_0=1$ to correspond with $\theta_0$
+* Training example $x_{(i)}$:
+
+$$
+x^{(i)} \rightarrow 
+\left[\begin{matrix}
+f_1^{(i)}=similarity(x^{(i)},l^{(1)}) \\
+f_1^{(i)}=similarity(x^{(i)},l^{(2)}) \\
+\vdots \\
+f_m^{(i)}=similarity(x^{(i)},l^{(m)}) \\
+
+\end{matrix}\right]
+$$
+
+* Cost Function
+
+$$
+\underset{\theta}{\min}=C\sum_{i=1}^my^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})
+
+
++\sum_{i=1}^m\theta_j^2
+$$
+
+### 2. Kernels and Similarity
+* Gaussian Function as Similarity  
+$\Large Given \ x: f_1=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(1)}||^2}{2\sigma^2}\right)=exp\left(-\frac{\sum_{j=1}^n(x_j-l_j^{(1)})^2}{2\sigma^2}\right)$  
+    > * Gaussian function computes the distance between vector $x$ and $l^{(i)}$
+    > * The formular, the choice of similarity function is called Gaussian Kernel  
+    > * The kernel function, $similarity(x,l^{(i)})$,  can also be denoted as $k(x, l^{(i)})$
+
+* The value of the function ranges from 0 to 1, indicating the similarity
+
+    $If \ x \approx l^{(i)}:f_1\approx exp\left(-\frac{\text{small number}}{2\sigma^2}\right) \approx 1$  
+    $If \ x \ far \ from \ l^{(i)}:f_1\approx exp\left(-\frac{\text{large number}}{2\sigma^2}\right) \approx 0$
+
+* The distribution of the Gaussian function is affected by the parameter $\sigma$
+    * <strong>A</strong>: If $\sigma$ is small, the value of the function would decrease steeper as feature vector($x$) gets further from vector $l$
+    * <strong>B</strong>: If $\sigma$ is small, the value of the function would decrease gentler as feature vector($x$) gets further from vector $l$
+
+<center><img src="https://robotacademy.net.au/wp-content/uploads/2017/05/3D_plots.jpg" width=500></center>
