@@ -199,3 +199,34 @@ $\Large Given \ x: f_1=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(1)}||^2}{2\
             <img src="./img/empty_coordinate_space_large_sigma.png" width=300>
 
 # 5. SVM in Use
+## 1. Things to be Specified
+* C
+* Kernel
+    * No kernel (linear kernel)
+    * Gaussian kernel
+        > Choose $\sigma^2$
+        > Perform feature scaling in advance
+        > Technical condition called "Mercer's Theorem" need to be satisfied
+    * Many off-the-shelf kernels are available: 
+        * Polynomial kernel: $k(x, l)=(x^Tl+constant)^{degree}$
+        * Many esoteric: string kernel, chi-square kernel, histogram intersection kernel etc
+
+## 2. Multiclass Classification
+<center><img src="./img/multiclass_classification.png" width = 300 ></center>  
+
+$$
+y\in\{1, 2, 3, \ldots , K\}
+$$
+* Many SVM packages already have built-in multi-class classification functionally
+* Otherwise, use one-vs-all method
+    * Train $K$ SVMs, one to distinguish $y=i$ from the rest, for $i=1, 2, \ldots, K$
+    * Get $\theta^{(1)}, \theta^{(2)}, \ldots, \theta^{(K)}$
+    * Pick class i with largest $(\theta^{(i)})^Tx$
+
+## 3. Logistic Regression vs. SVMs
+$n=\text{number of features} (x \in \R^{n+1}), m = \text{number of training examples}$
+
+* n > m: logistic regression or linear kernel
+* small n & medium m: Gaussian kernel
+* small n & large m: add features with logistic regression or linear kernel
+* Neural Network likely to work well for most of these settings, but may be slower to train
