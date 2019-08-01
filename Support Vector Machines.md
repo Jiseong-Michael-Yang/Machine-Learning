@@ -1,3 +1,4 @@
+
 # 1. Optimization Objective
 ## 1. Logistic Regression
 * Alternative view of logistic regression
@@ -167,7 +168,7 @@ $\Large Given \ x^{(i)}: f_i=similarity(x^{(i)},l^{(i)})=exp\left(-\frac{||x^{(i
     $If \ x \approx l^{(i)}:f_1\approx exp\left(-\frac{\text{small number}}{2\sigma^2}\right) \approx 1$  
     $If \ x \ far \ from \ l^{(i)}:f_1\approx exp\left(-\frac{\text{large number}}{2\sigma^2}\right) \approx 0$
 
-* The distribution of the Gaussian function is affected by the parameter $\sigma$
+* The distribution of the Gaussian function is affected by the parameter $\sigma$ <p id="sigma"></p>
     * <strong>A</strong>: If $\sigma$ is small, the value of the function would decrease steeper as feature vector($x$) gets further from vector $l$
     * <strong>B</strong>: If $\sigma$ is small, the value of the function would decrease gentler as feature vector($x$) gets further from vector $l$
 
@@ -193,14 +194,9 @@ $\Large Given \ x^{(i)}: f_i=similarity(x^{(i)},l^{(i)})=exp\left(-\frac{||x^{(i
         * Large $C$ (small $\lambda$): lower bias, high variance (overfitting)
         * Small $C$ (large $\lambda$): higher bias, low variance (underfitting)
 
-    * $\sigma^2$
+    * [$\sigma^2$](#sigma)
         * Small $\sigma^2$: features $f_i$ vary less smoothly; lower bias, higher variance (overfitting)
-
-            <img src="./img/empty_coordinate_space_small_sigma.png" width=300>
-        
         * Large $\sigma^2$: features $f_i$ vary more smoothely; higher bias, lower variance (underfitting)
-
-            <img src="./img/empty_coordinate_space_large_sigma.png" width=300>
 
 # 5. SVM in Use
 ## 1. Things to be Specified
