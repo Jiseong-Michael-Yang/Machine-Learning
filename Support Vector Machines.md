@@ -22,7 +22,7 @@
 ## 2. Support Vector Machine
 * Cost Function  
 
-    $\underset{\theta}{\min}=C\sum_{i=1}^my^{(i)}cost_1(\theta^Tx)+(1-y^{(i)})cost_0(\theta^Tx)+\sum_{j=1}^n\theta_j^2$
+    $\underset{\theta}{\min}=C\sum_{i=1}^my^{(i)}cost_1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})+\sum_{j=1}^n\theta_j^2$
 
     > CA + B: If C is high, A gains more weight; where C = 1/λ
 
@@ -44,19 +44,21 @@ $$h_\theta(x)=
     * Suppose they are as very large as 10,000
 
 * Decision Boundary: Linearly Separable Case
-    * There could be multiple potential lines, but the black one seems the most robust.
+    * There could be multiple potential lines, but the black one seems the most robust
     * Grey lines generate the largest minimun distants (margins)
     * SVM is also called <strong>Large Margin Classifier</strong>
 <center><img src="./img/svm_decision_boundary.png" width=300 /></center>
 
 * Large Margin Classifier in Presence of Outliers
-    * Large <font color="yellow">C</font>
+    * <font color="blue"><strong>Large C</strong></font>
         * Narrow margin (lower rate of misclassification)
         * The value of cost function will be sensitive with regard to the deviation of the value of $\theta^Tx$ from the threshold value
+        * Therefore, margin will be adjusted more strictly such that cost-function-increasing data placed outside the margin
         * Decision boundary like the blue line will be changed drastically by an outlier
-    * Not too large <font color="yellow">C</font>
+    * <font color="black"><strong>Not too large C</strong></font>
         * Broad Margin (higher rate of misclassification)
         * The value of cost function will be resistant with regard to the deviation of the value of $\theta^Tx$ from the threshold value
+        * Therefore, margin will be adjusted less strictly such that cost-function-increasing data may be placed inside the margin
         * Decision boundary like the black one will not be changed drastically by an outlier
 <center><img src="./img/svm_outliers.png" width=300 /></center>
 
@@ -77,6 +79,7 @@ $||u||=length\ of\ vector \ u=\sqrt{u_1^2+u_2^2}$
 $p=length \ of \ projection \ of v \ onto \ u$  
 $u^Tv = p \cdot ||u||=u_1v_1+u_2v_2$
     > p has a sign depending on the angle between vectors
+    > If the angle is greater than 90 degrees, then the sign of p is negative
 
 ### 2. SVM Decision Boundary
 * $\Large \underset{\theta}{{\min}}=\frac{1}{2}\sum_{j=1}^n\theta_j^2$  
@@ -84,7 +87,7 @@ $u^Tv = p \cdot ||u||=u_1v_1+u_2v_2$
     $\theta^Tx^{(i)} \geq 1 \ if \ y^{(i)} = 1$  
     $\theta^Tx^{(i)} \leq -1 \ if \ y^{(i)} = 0$
 
-    $Simplification: \theta_0 = 0,  n = 2$
+    $Simplification: \theta_0 = 0,  n = 2$  
     $\underset{\theta}{{\min}}=\frac{1}{2}\sum_{j=1}^n\theta_j^2=\frac{1}{2}(\theta_1^2+\theta_2^2)={\frac{1}{2}(\sqrt{\theta_1^2+\theta_2^2})^2}=\frac{1}{2}||\theta||^2$
 
 * Inner product of $\theta^Tx^{(i)}$  
@@ -97,6 +100,7 @@ $u^Tv = p \cdot ||u||=u_1v_1+u_2v_2$
 
 # 4. Kernels
 ## 1. Non-linear Decision Boundary
+* Kernels allow us to make complex, non-linear classifiers using SVM
 <center><img src="./img/nonlinear_decision_boundary.png" width=300 /></center>
 
 * $Predict \ y = 1 \ if$  
@@ -127,8 +131,8 @@ $$
 
 $$
 Given \ x: f_1=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(1)}||^2}{2\sigma^2}\right) \\
-Given \ x: f_2=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(2)}||^2}{2\sigma^2}\right) \\
-Given \ x: f_3=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(3)}||^2}{2\sigma^2}\right)
+Given \ x: f_2=similarity(x,l^{(2)})=exp\left(-\frac{||x-l^{(2)}||^2}{2\sigma^2}\right) \\
+Given \ x: f_3=similarity(x,l^{(3)})=exp\left(-\frac{||x-l^{(3)}||^2}{2\sigma^2}\right)
 $$
 
 * This gives us a <strong>feature vector</strong>, $f_{(i)}$ of all our features for example $x_{(i)}$
@@ -153,7 +157,7 @@ $$
 
 ### 2. Kernels and Similarity
 * Gaussian Function as Similarity  
-$\Large Given \ x: f_1=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(1)}||^2}{2\sigma^2}\right)=exp\left(-\frac{\sum_{j=1}^n(x_j-l_j^{(1)})^2}{2\sigma^2}\right)$  
+$\Large Given \ x^{(i)}: f_i=similarity(x^{(i)},l^{(i)})=exp\left(-\frac{||x^{(i)}-l^{(i)}||^2}{2\sigma^2}\right)=exp\left(-\frac{\sum_{j=1}^n(x_j-l_j^{(i)})^2}{2\sigma^2}\right)$  
     > * Gaussian function computes the distance between vector $x$ and $l^{(i)}$
     > * The formular, the choice of similarity function is called Gaussian Kernel  
     > * The kernel function, $similarity(x,l^{(i)})$,  can also be denoted as $k(x, l^{(i)})$
@@ -221,7 +225,7 @@ $$
 * Otherwise, use one-vs-all method
     * Train $K$ SVMs, one to distinguish $y=i$ from the rest, for $i=1, 2, \ldots, K$
     * Get $\theta^{(1)}, \theta^{(2)}, \ldots, \theta^{(K)}$
-    * Pick class i with largest $(\theta^{(i)})^Tx$
+    * Pick class i with largest $(\theta^{(i)})^Tx$ (hyperplane)
 
 ## 3. Logistic Regression vs. SVMs
 $n=\text{number of features} (x \in \R^{n+1}), m = \text{number of training examples}$
