@@ -88,7 +88,7 @@ $u^Tv = p \cdot ||u||=u_1v_1+u_2v_2$
     $\theta^Tx^{(i)} \leq -1 \ if \ y^{(i)} = 0$
 
     $Simplification: \theta_0 = 0,  n = 2$  
-    $\underset{\theta}{{\min}}=\frac{1}{2}\sum_{j=1}^n\theta_j^2=\frac{1}{2}(\theta_1^2+\theta_2^2)={\frac{1}{2}(\sqrt{\theta_1^2+\theta_2^2})^2}=\frac{1}{2}||\theta||^2$
+    $\underset{\theta}{{\min}}=\frac{1}{2}\sum_{j=1}^n\theta_j^2=\frac{1}{2}(\theta_1^2+\theta_2^2)={\frac{1}{2}(\sqrt{\theta_1^2+\theta_2^2})^2}=\frac{1}{2}||\theta||^2$  
 
 * Inner product of $\theta^Tx^{(i)}$  
 <img src="./img/inner_product.png" width=300 />
@@ -216,7 +216,7 @@ $\Large Given \ x^{(i)}: f_i=similarity(x^{(i)},l^{(i)})=exp\left(-\frac{||x^{(i
         * Many esoteric: string kernel, chi-square kernel, histogram intersection kernel etc
 
 ## 2. Multiclass Classification
-<center><img src="./img/multiclass_classification.png" width = 300 ></center>  
+<center><img src="./img/multiclass_classification.png" width = 300 ></center> 
 
 $$
 y\in\{1, 2, 3, \ldots , K\}
@@ -225,7 +225,8 @@ $$
 * Otherwise, use one-vs-all method
     * Train $K$ SVMs, one to distinguish $y=i$ from the rest, for $i=1, 2, \ldots, K$
     * Get $\theta^{(1)}, \theta^{(2)}, \ldots, \theta^{(K)}$
-    * Pick class i with largest $(\theta^{(i)})^Tx$ (hyperplane)
+    * Pick class i with the largest $(\theta^{(i)})^Tx$ (hyperplane)
+    * That the hyperplane is large "positive" value means that the data is for sure classified as 1
 
 ## 3. Logistic Regression vs. SVMs
 $n=\text{number of features} (x \in \R^{n+1}), m = \text{number of training examples}$
