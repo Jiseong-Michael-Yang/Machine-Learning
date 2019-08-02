@@ -95,6 +95,7 @@ $u^Tv = p \cdot ||u||=u_1v_1+u_2v_2$
 <img src="./img/inner_product.png" width=300 />
 
     $\theta^Tx^{(i)}=p^{(i)}||\theta||$  
+
     * As $\theta^Tx = 0$, $\theta$ is perpendicular with regard to $x$ 
     * If the margin is large, $p^{(i)}$ is little, causing $||\theta||$, as well as $J(\theta)$, to be greater
     * If the margin is small, $p^{(i)}$ is large, causing $||\theta||$, as well as $J(\theta)$, to be smaller
@@ -125,16 +126,18 @@ $$
 
 ## 2. Gaussian Kernel
 ### 1. Landmarks and Similarity
+
 * Given $x$, compute new feature depending on proximity to landmarks $l^{(1)}, \ l^{(2)}, \ l^{(3)}$
 > * One way to get the landmarks is to put them in the <strong>exact same</strong> locations as all the training examples
 > * This gives us <strong>m</strong> landmarks, with one landmark per training example
 <center><img src="./img/kernel.png" width=300 /></center>
 
-$$
-Given \ x: f_1=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(1)}||^2}{2\sigma^2}\right) \\
-Given \ x: f_2=similarity(x,l^{(2)})=exp\left(-\frac{||x-l^{(2)}||^2}{2\sigma^2}\right) \\
-Given \ x: f_3=similarity(x,l^{(3)})=exp\left(-\frac{||x-l^{(3)}||^2}{2\sigma^2}\right)
-$$
+$Given \ x: f_1=similarity(x,l^{(1)})=exp\left(-\frac{||x-l^{(1)}||^2}{2\sigma^2}\right)$  
+
+$Given \ x: f_2=similarity(x,l^{(2)})=exp\left(-\frac{||x-l^{(2)}||^2}{2\sigma^2}\right)$  
+
+$Given \ x: f_3=similarity(x,l^{(3)})=exp\left(-\frac{||x-l^{(3)}||^2}{2\sigma^2}\right)$
+
 
 * This gives us a <strong>feature vector</strong>, $f_{(i)}$ of all our features for example $x_{(i)}$
 * $f_0=1$ to correspond with $\theta_0$
@@ -158,7 +161,7 @@ $$
 
 ### 2. Kernels and Similarity
 * Gaussian Function as Similarity  
-$\Large Given \ x^{(i)}: f_i=similarity(x^{(i)},l^{(i)})=exp\left(-\frac{||x^{(i)}-l^{(i)}||^2}{2\sigma^2}\right)=exp\left(-\frac{\sum_{j=1}^n(x_j-l_j^{(i)})^2}{2\sigma^2}\right)$  
+$Given \ x^{(i)}: f_i=similarity(x^{(i)},l^{(i)})=exp\left(-\frac{||x^{(i)}-l^{(i)}||^2}{2\sigma^2}\right)=exp\left(-\frac{\sum_{j=1}^n(x_j-l_j^{(i)})^2}{2\sigma^2}\right)$  
     > * Gaussian function computes the distance between vector $x$ and $l^{(i)}$
     > * The formular, the choice of similarity function is called Gaussian Kernel  
     > * The kernel function, $similarity(x,l^{(i)})$,  can also be denoted as $k(x, l^{(i)})$
