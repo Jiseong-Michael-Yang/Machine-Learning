@@ -185,7 +185,7 @@ $Given \ x^{(i)}: f_i=similarity(x^{(i)},l^{(i)})=exp\left(-\frac{||x^{(i)}-l^{(
     * Predict "y=1" if $\theta^Tf \geq 0$
     * Training
 
-        $\underset{\theta}{\min}=C\sum_{i=1}^my^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})+\sum_{j=1}^{\color{yellow}{m}}\theta_j^2$
+        $\underset{\theta}{\min}=C\sum_{i=1}^my^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})+\sum_{j=1}^{\color{red}{m}}\theta_j^2$
         > * Note "m" in the second term for it should be the effective number of features of x
         > * Also in the second term, j starts from 1 because $\theta_0$ is not regularized
         > * $\sum_{j=1}^m\theta_j^2 = \theta^T\theta$, but use $\theta^TM\theta$ instead
