@@ -149,7 +149,7 @@ f_1^{(i)}=similarity(x^{(i)},l^{(1)}) \\
 f_1^{(i)}=similarity(x^{(i)},l^{(2)}) \\
 \vdots \\
 f_m^{(i)}=similarity(x^{(i)},l^{(m)}) \\
-\end{matrix}\right], x^{(i)} \in \R^{n+1}; \text{where m is the size of data, n the number of features }
+\end{matrix}\right], x^{(i)} \in \mathbb{R}^{n+1}; \text{where m is the size of data, n the number of features }
 $$
 
 * Cost Function
@@ -181,7 +181,7 @@ $Given \ x^{(i)}: f_i=similarity(x^{(i)},l^{(i)})=exp\left(-\frac{||x^{(i)}-l^{(
     * Predict "0" otherwise
 
 ### 3. SVM with Kernels
-* Hypothesis: Given x, compute features $f \in \R^{m+1}$ (Optionally plus one depending on the constant feature)
+* Hypothesis: Given x, compute features $f \in \mathbb{R}^{m+1}$ (Optionally plus one depending on the constant feature)
     * Predict "y=1" if $\theta^Tf \geq 0$
     * Training
 
@@ -227,7 +227,7 @@ $$
     * That the hyperplane is large "positive" value means that the data is for sure classified as 1
 
 ## 3. Logistic Regression vs. SVMs
-$n=\text{number of features} (x \in \R^{n+1}), m = \text{number of training examples}$
+$n=\text{number of features} (x \in \mathbb{R}^{n+1}), m = \text{number of training examples}$
 
 * n > m: logistic regression or linear kernel
 * small n & medium m: Gaussian kernel
