@@ -94,8 +94,7 @@ $u^Tv = p \cdot ||u||=u_1v_1+u_2v_2$
 * Inner product of $\theta^Tx^{(i)}$  
 <img src="./img/inner_product.png" width=300 />
 
-    $\theta^Tx^{(i)}=p^{(i)}||\theta||$  
-
+* $\theta^Tx^{(i)}=p^{(i)}||\theta||$  
     * As $\theta^Tx = 0$, $\theta$ is perpendicular with regard to $x$ 
     * If the margin is large, $p^{(i)}$ is little, causing $||\theta||$, as well as $J(\theta)$, to be greater
     * If the margin is small, $p^{(i)}$ is large, causing $||\theta||$, as well as $J(\theta)$, to be smaller
